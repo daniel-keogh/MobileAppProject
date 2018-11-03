@@ -36,13 +36,18 @@ namespace TaskList
             string hours = ReminderTime.Time.ToString("hh");
             string minutes = ReminderTime.Time.ToString("mm");
             time = hours + ":" + minutes;
-            ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
+            DisplayConfirmationString();
         }
 
         // date picker event handler
         void DateSelected(object sender, DateChangedEventArgs e)
         {
             date = ReminderDate.Date.ToString("dddd, MMM d, yyyy");
+            DisplayConfirmationString();
+        }
+
+        void DisplayConfirmationString()
+        {
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
         }
     }
