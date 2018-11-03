@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -42,7 +41,7 @@ namespace TaskList
         // date picker event handler
         void DateSelected(object sender, DateChangedEventArgs e)
         {
-            date = ReminderDate.Date.ToString("dddd, MMM d, yyyy");
+            date = ReminderDate.Date.ToString("MMM. d, yyyy");
             DisplayConfirmationString();
         }
 
