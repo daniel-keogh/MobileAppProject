@@ -4,21 +4,29 @@
              x:Class="TaskList.NewTaskPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
-                 HorizontalOptions="Center">
-            <Label Text="Remind me?"/>
+                     HorizontalOptions="CenterAndExpand">
 
-            <Switch x:Name="RemindYesOrNo" 
-                Toggled="SwitchToggled"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Remind me?"/>
+                <Switch x:Name="RemindYesOrNo" 
+                        Toggled="SwitchToggled"/>
+            </StackLayout>
 
             <StackLayout x:Name="SetReminder"
-                     IsVisible="False">
-                <DatePicker x:Name="ReminderDate" 
-                        VerticalOptions="CenterAndExpand" 
-                        DateSelected="DateSelected"/>
+                         IsVisible="False">
 
+                <Label Text="Date:"/>
+                <DatePicker x:Name="ReminderDate" 
+                            VerticalOptions="CenterAndExpand" 
+                            PropertyChanged="DateSelected"/>
+
+                <Label Text="Time:"/>
                 <TimePicker x:Name="ReminderTime" 
-                        VerticalOptions="CenterAndExpand" 
-                        PropertyChanged="TimeSelected"/>
+                            VerticalOptions="CenterAndExpand" 
+                            PropertyChanged="TimeSelected"/>
+
+                <Label x:Name="ChosenDateTime" 
+                       Text=""/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
