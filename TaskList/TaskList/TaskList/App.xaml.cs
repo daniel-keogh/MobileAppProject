@@ -11,7 +11,10 @@ namespace TaskList
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+
+            // temporarily set MainPage to NewTaskPage until design in finished
+            MainPage = new NewTaskPage();
         }
 
         protected override void OnStart()

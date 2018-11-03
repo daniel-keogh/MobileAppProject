@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskList.NewTaskPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                 HorizontalOptions="Center">
+            <Label Text="Remind me?"/>
+
+            <Switch x:Name="RemindYesOrNo" 
+                Toggled="SwitchToggled"/>
+
+            <StackLayout x:Name="SetReminder"
+                     IsVisible="False">
+                <DatePicker x:Name="ReminderDate" 
+                        VerticalOptions="CenterAndExpand" 
+                        DateSelected="DateSelected"/>
+
+                <TimePicker x:Name="ReminderTime" 
+                        VerticalOptions="CenterAndExpand" 
+                        PropertyChanged="TimeSelected"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
