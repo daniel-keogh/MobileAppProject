@@ -20,7 +20,7 @@ namespace TaskList
 		}
 
         // method to display the date/time pickers if the switch is toggled on
-        void SwitchToggled(object sender, ToggledEventArgs e)
+        void OnSwitchToggled(object sender, ToggledEventArgs e)
         {
             if (RemindYesOrNo.IsToggled)
                 SetReminder.IsVisible = true;
@@ -30,7 +30,7 @@ namespace TaskList
         }
 
         // time picker event handler
-        void TimeSelected(object sender, PropertyChangedEventArgs e)
+        void OnTimeSelected(object sender, PropertyChangedEventArgs e)
         {
             string hours = ReminderTime.Time.ToString("hh");
             string minutes = ReminderTime.Time.ToString("mm");
@@ -39,9 +39,9 @@ namespace TaskList
         }
 
         // date picker event handler
-        void DateSelected(object sender, DateChangedEventArgs e)
+        void OnDateSelected(object sender, DateChangedEventArgs e)
         {
-            date = ReminderDate.Date.ToString("MMM. d, yyyy");
+            date = ReminderDate.Date.ToString("MMM d, yyyy");
             DisplayConfirmationString();
         }
 

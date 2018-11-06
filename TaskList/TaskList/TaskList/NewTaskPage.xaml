@@ -3,30 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TaskList.NewTaskPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center"
-                     HorizontalOptions="CenterAndExpand">
+        <StackLayout Padding="20, 50, 20, 0">
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Remind me?"/>
+            <Entry x:Name="TaskName"
+                   Placeholder="Enter task name"/>
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="0, 50, 0, 0">
+                <Label Text="Remind me?"
+                       Margin="0, 5, 25, 0"/>
                 <Switch x:Name="RemindYesOrNo" 
-                        Toggled="SwitchToggled"/>
+                        Toggled="OnSwitchToggled"/>
             </StackLayout>
 
             <StackLayout x:Name="SetReminder"
+                         HorizontalOptions="CenterAndExpand"
                          IsVisible="False">
 
-                <Label Text="Date:"/>
-                <DatePicker x:Name="ReminderDate" 
-                            VerticalOptions="CenterAndExpand" 
-                            PropertyChanged="DateSelected"/>
+                <Label Text="Date:"
+                       Margin="0, 50, 0, 0"/>
+                <DatePicker x:Name="ReminderDate"
+                            PropertyChanged="OnDateSelected"/>
 
-                <Label Text="Time:"/>
-                <TimePicker x:Name="ReminderTime" 
-                            VerticalOptions="CenterAndExpand" 
-                            PropertyChanged="TimeSelected"/>
+                <Label Text="Time:"
+                       Margin="0, 25, 0, 0"/>
+                <TimePicker x:Name="ReminderTime"               
+                            PropertyChanged="OnTimeSelected"/>
 
-                <Label x:Name="ChosenDateTime" 
-                       Text=""/>
+                <Label x:Name="ChosenDateTime"
+                       Margin="0, 25, 0, 0"
+                       HorizontalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
