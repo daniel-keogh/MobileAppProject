@@ -553,6 +553,9 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll">
       <PackagePath>TaskList.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\add.png">
+      <PackagePath>add.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -660,6 +663,12 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\cancel.png">
+      <PackagePath>cancel.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\save.png">
+      <PackagePath>save.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>

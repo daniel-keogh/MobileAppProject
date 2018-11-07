@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TaskList.NewTaskPage">
+             x:Class="TaskList.NewTaskPage"
+             Title="Create a New Task">
+
+    <NavigationPage.TitleView>
+        <Button x:Name="SaveTask"
+                HorizontalOptions="End"
+                Text="Save"
+                Clicked="SaveTask_Clicked"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
         <StackLayout Padding="20, 50, 20, 0">
 
@@ -9,7 +18,7 @@
                    Placeholder="Enter task name"/>
 
             <StackLayout Orientation="Horizontal"
-                         Margin="0, 50, 0, 0">
+                         Margin="0, 25, 0, 0">
                 <Label Text="Remind me?"
                        Margin="0, 5, 25, 0"/>
                 <Switch x:Name="RemindYesOrNo" 

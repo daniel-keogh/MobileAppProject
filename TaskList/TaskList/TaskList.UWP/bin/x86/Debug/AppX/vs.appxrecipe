@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-07T19:10:44.162</Modified>
+      <Modified>2018-11-07T21:42:47.214</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\TaskList.UWP.exe">
       <PackagePath>entrypoint\TaskList.UWP.exe</PackagePath>
-      <Modified>2018-11-07T19:10:42.276</Modified>
+      <Modified>2018-11-07T21:42:45.618</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.5\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -737,7 +737,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll">
       <PackagePath>TaskList.dll</PackagePath>
-      <Modified>2018-11-07T19:10:29.603</Modified>
+      <Modified>2018-11-07T21:42:36.139</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\add.png">
+      <PackagePath>add.png</PackagePath>
+      <Modified>2018-11-02T10:29:45.700</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -874,6 +878,14 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-10-29T12:17:43.122</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\cancel.png">
+      <PackagePath>cancel.png</PackagePath>
+      <Modified>2018-11-02T10:29:45.707</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\save.png">
+      <PackagePath>save.png</PackagePath>
+      <Modified>2018-11-02T10:29:45.761</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2018-10-29T12:17:43.243</Modified>
@@ -884,11 +896,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-07T19:10:41.850</Modified>
+      <Modified>2018-11-07T21:42:45.179</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-07T19:10:41.851</Modified>
+      <Modified>2018-11-07T21:42:45.181</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -901,11 +913,11 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-07T19:08:24.592</Modified>
+      <Modified>2018-11-07T21:29:18.278</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\TaskList.UWP.exe">
       <PackagePath>TaskList.UWP.exe</PackagePath>
-      <Modified>2018-11-07T19:10:44.148</Modified>
+      <Modified>2018-11-07T21:42:47.200</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
