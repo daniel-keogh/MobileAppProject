@@ -13,7 +13,7 @@
                 <Label Text="Remind me?"
                        Margin="0, 5, 25, 0"/>
                 <Switch x:Name="RemindYesOrNo" 
-                        Toggled="OnSwitchToggled"/>
+                        Toggled="RemindYesOrNo_Toggled"/>
             </StackLayout>
 
             <StackLayout x:Name="SetReminder"
@@ -23,12 +23,12 @@
                 <Label Text="Date:"
                        Margin="0, 50, 0, 0"/>
                 <DatePicker x:Name="ReminderDate"
-                            PropertyChanged="OnDateSelected"/>
+                            PropertyChanged="ReminderDate_PropertyChanged"/>
 
                 <Label Text="Time:"
                        Margin="0, 25, 0, 0"/>
                 <TimePicker x:Name="ReminderTime"               
-                            PropertyChanged="OnTimeSelected"/>
+                            PropertyChanged="ReminderTime_PropertyChanged"/>
 
                 <Label x:Name="ChosenDateTime"
                        Margin="0, 25, 0, 0"

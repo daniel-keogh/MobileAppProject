@@ -13,8 +13,7 @@ namespace TaskList
 
             //MainPage = new MainPage();
 
-            // temporarily set MainPage to NewTaskPage until design in finished
-            MainPage = new NewTaskPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

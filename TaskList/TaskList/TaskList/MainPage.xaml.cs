@@ -13,5 +13,11 @@ namespace TaskList
         {
             InitializeComponent();
         }
+
+        // temporary
+        private void TempBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewTaskPage());
+        }
     }
 }

@@ -5,10 +5,13 @@
              x:Class="TaskList.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <!-- temporary -->
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Button x:Name="TempBtn"
+                    Text="New Task"
+                    HorizontalOptions="Center"
+                    Clicked="TempBtn_Clicked"/>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
