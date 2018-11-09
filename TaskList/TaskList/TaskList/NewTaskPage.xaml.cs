@@ -46,9 +46,9 @@ namespace TaskList
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
         }
 
-        private void SaveTask_Clicked(object sender, EventArgs e)
+        async private void SaveTask_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
     }

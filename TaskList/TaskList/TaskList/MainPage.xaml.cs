@@ -14,9 +14,9 @@ namespace TaskList
             InitializeComponent();
         }
 
-        private void CreateNewTask_Clicked(object sender, EventArgs e)
+        async private void CreateNewTask_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewTaskPage());
+            await Navigation.PushAsync(new NewTaskPage());
         }
     }
 }

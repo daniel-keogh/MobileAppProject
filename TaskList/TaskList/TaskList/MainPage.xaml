@@ -5,11 +5,14 @@
              x:Class="TaskList.MainPage"
              Title="Home">
 
-    <NavigationPage.TitleView>
-        <Button x:Name="CreateNewTask"
-                HorizontalOptions="End"
-                Text="  +  "
-                Clicked="CreateNewTask_Clicked"/>
-    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="CreateNewTask_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, UWP" Value="add.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 
 </ContentPage>

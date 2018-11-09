@@ -4,29 +4,37 @@
              x:Class="TaskList.NewTaskPage"
              Title="Create a New Task">
 
-    <NavigationPage.TitleView>
-        <Button x:Name="SaveTask"
-                HorizontalOptions="End"
-                Text="Save"
-                Clicked="SaveTask_Clicked"/>
-    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="SaveTask_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Padding="20, 50, 20, 0">
+        <StackLayout Padding="20">
 
+            <Label Text="Title:"/>
             <Entry x:Name="TaskName"
                    Placeholder="Enter task name"/>
 
             <StackLayout Orientation="Horizontal"
-                         Margin="0, 25, 0, 0">
-                <Label Text="Remind me?"
-                       Margin="0, 5, 25, 0"/>
-                <Switch x:Name="RemindYesOrNo" 
-                        Toggled="RemindYesOrNo_Toggled"/>
+                         Margin="0, 20, 0, 0">
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="Remind me?"
+                           Margin="0, 0, 25, 0"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center">
+                    <Switch x:Name="RemindYesOrNo"
+                            Toggled="RemindYesOrNo_Toggled"/>
+                </StackLayout>
             </StackLayout>
 
             <StackLayout x:Name="SetReminder"
-                         HorizontalOptions="CenterAndExpand"
+                         HorizontalOptions="Center"
                          IsVisible="False">
 
                 <Label Text="Date:"
@@ -35,12 +43,12 @@
                             PropertyChanged="ReminderDate_PropertyChanged"/>
 
                 <Label Text="Time:"
-                       Margin="0, 25, 0, 0"/>
+                       Margin="0, 20, 0, 0"/>
                 <TimePicker x:Name="ReminderTime"               
                             PropertyChanged="ReminderTime_PropertyChanged"/>
 
                 <Label x:Name="ChosenDateTime"
-                       Margin="0, 25, 0, 0"
+                       Margin="0, 20, 0, 0"
                        HorizontalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>
