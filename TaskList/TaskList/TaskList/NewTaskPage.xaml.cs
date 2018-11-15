@@ -9,14 +9,30 @@ using Xamarin.Forms.Xaml;
 
 namespace TaskList
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewTaskPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewTaskPage : ContentPage
+    {
         string date, time;
+        bool somethingChanged = false;
 
         public NewTaskPage()
         {
             InitializeComponent();
+            RemoveAndroidBackBtn();
+        }
+
+        private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (RemindYesOrNo.IsToggled)
+            {
+                SetReminder.IsVisible = true;
+                somethingChanged = true;
+            }
+            else
+            {
+                SetReminder.IsVisible = false;
+                somethingChanged = false;
+            }
         }
 
         private void ReminderTime_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -33,14 +49,6 @@ namespace TaskList
             DisplayConfirmationString();
         }
 
-        private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (RemindYesOrNo.IsToggled)
-                SetReminder.IsVisible = true;
-            else
-                SetReminder.IsVisible = false;
-        }
-
         void DisplayConfirmationString()
         {
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
@@ -48,8 +56,41 @@ namespace TaskList
 
         async private void SaveTask_Clicked(object sender, EventArgs e)
         {
+            // TODO
             await Navigation.PopAsync();
         }
 
+        // override the back navigation button to display an alert
+        protected override bool OnBackButtonPressed()
+        {
+            DisplayConfirmationPrompt();
+            return true;
+        }
+
+        // Because the alert will only display by using android's hardware button
+        private void RemoveAndroidBackBtn()
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    NavigationPage.SetHasBackButton(this, false);
+                    break;
+            }
+        }
+
+        async void DisplayConfirmationPrompt()
+        {
+            if (somethingChanged) // the alert only shows if any of the fields have been modified
+            {
+                bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
+
+                if (choice)
+                    await Navigation.PopAsync();
+            }
+            else
+            {
+                await Navigation.PopAsync();
+            }
+        }
     }
 }
