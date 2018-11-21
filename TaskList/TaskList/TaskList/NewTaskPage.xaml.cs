@@ -13,7 +13,6 @@ namespace TaskList
     public partial class NewTaskPage : ContentPage
     {
         string date, time;
-        bool somethingChanged = false;
 
         public NewTaskPage()
         {
@@ -21,18 +20,16 @@ namespace TaskList
             RemoveAndroidBackBtn();
         }
 
+        protected override void OnAppearing()
+        {
+            // base.OnAppearing();
+
+            TaskName.Focus();
+        }
+
         private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
         {
-            if (RemindYesOrNo.IsToggled)
-            {
-                SetReminder.IsVisible = true;
-                somethingChanged = true;
-            }
-            else
-            {
-                SetReminder.IsVisible = false;
-                somethingChanged = false;
-            }
+
         }
 
         private void ReminderTime_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -51,12 +48,11 @@ namespace TaskList
 
         void DisplayConfirmationString()
         {
-            ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
+            ChosenDateTime.Text = "Reminder set for " + date + " at " + time + ".";
         }
 
         async private void SaveTask_Clicked(object sender, EventArgs e)
         {
-            // TODO
             await Navigation.PopAsync();
         }
 
@@ -70,17 +66,13 @@ namespace TaskList
         // Because the alert will only display by using android's hardware button
         private void RemoveAndroidBackBtn()
         {
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    NavigationPage.SetHasBackButton(this, false);
-                    break;
-            }
+            if (Device.RuntimePlatform == Device.Android)
+                NavigationPage.SetHasBackButton(this, false);
         }
 
         async void DisplayConfirmationPrompt()
         {
-            if (somethingChanged) // the alert only shows if any of the fields have been modified
+            if (SetReminder.IsVisible || TaskName.Text != null) // the alert only shows if any of the fields have been modified
             {
                 bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
 

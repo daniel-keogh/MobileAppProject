@@ -5,13 +5,7 @@
              Title="Create a New Task">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="SaveTask_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android, UWP" Value="save.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
+        <ToolbarItem Icon="save.png" Text="Save" Clicked="SaveTask_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -35,7 +29,7 @@
 
             <StackLayout x:Name="SetReminder"
                          HorizontalOptions="Center"
-                         IsVisible="False">
+                         IsVisible="{Binding Source={x:Reference RemindYesOrNo}, Path=IsToggled}">
 
                 <Label Text="Date:"
                        Margin="0, 50, 0, 0"/>
@@ -44,7 +38,8 @@
 
                 <Label Text="Time:"
                        Margin="0, 20, 0, 0"/>
-                <TimePicker x:Name="ReminderTime"               
+                <TimePicker x:Name="ReminderTime"    
+                            Time="12:00"
                             PropertyChanged="ReminderTime_PropertyChanged"/>
 
                 <Label x:Name="ChosenDateTime"

@@ -2348,6 +2348,9 @@ namespace TaskList.Droid
 			// aapt resource value: 0x7F090055
 			public const int avd_show_password = 2131296341;
 			
+			// aapt resource value: 0x7F010003
+			public const int delete = 2130771971;
+			
 			// aapt resource value: 0x7F090056
 			public const int design_bottom_navigation_item_background = 2131296342;
 			
@@ -2996,11 +2999,11 @@ namespace TaskList.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010003
-			public const int remind = 2130771971;
-			
 			// aapt resource value: 0x7F010004
-			public const int save = 2130771972;
+			public const int remind = 2130771972;
+			
+			// aapt resource value: 0x7F010005
+			public const int save = 2130771973;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;

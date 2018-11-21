@@ -6,13 +6,26 @@
              Title="Home">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="CreateNewTask_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android, UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
+        <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
 
+    <ListView x:Name="ListView" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Title}"/>
+                        <Label Text="{Binding Reminder}" TextColor="Accent"/>
+                    </StackLayout>
+                    <ViewCell.ContextActions>
+                        <MenuItem x:Name="ContextDelete" Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True">
+                            <MenuItem.Icon>
+                                <OnPlatform Android="delete.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ViewCell.ContextActions>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
