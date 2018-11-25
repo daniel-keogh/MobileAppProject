@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TaskList"
              x:Class="TaskList.MainPage"
+             NavigationPage.HasBackButton="False"
              Title="Home">
 
     <ContentPage.ToolbarItems>
@@ -14,7 +15,7 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Padding="10">
-                        <Label Text="{Binding Title}"/>
+                        <Label Text="{Binding Title}" FontSize="Medium"/>
                         <Label Text="{Binding Reminder}" TextColor="Accent"/>
                     </StackLayout>
                     <ViewCell.ContextActions>
