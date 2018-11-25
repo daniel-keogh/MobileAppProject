@@ -17,13 +17,12 @@ namespace TaskList
         public NewTaskPage()
         {
             InitializeComponent();
-            RemoveAndroidBackBtn();
         }
 
         protected override void OnAppearing()
         {
             // base.OnAppearing();
-
+            RemoveAndroidBackBtn();
             TaskName.Focus();
         }
 
@@ -53,7 +52,24 @@ namespace TaskList
 
         async private void SaveTask_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            string tName = TaskName.Text;
+            string tReminder = date + " at " + time;
+
+            if(!(string.IsNullOrWhiteSpace(TaskName.Text)))
+            {
+                if (SetReminder.IsVisible)
+                {
+                    await Navigation.PushAsync(new MainPage(tName, tReminder));
+                }
+                else if (!SetReminder.IsVisible)
+                {
+                    await Navigation.PushAsync(new MainPage(tName));
+                }
+            }
+            else
+            {
+                await Navigation.PopAsync();
+            }
         }
 
         // override the back navigation button to display an alert
@@ -72,7 +88,8 @@ namespace TaskList
 
         async void DisplayConfirmationPrompt()
         {
-            if (SetReminder.IsVisible || TaskName.Text != null) // the alert only shows if any of the fields have been modified
+            // the alert only shows if any of the fields have been modified
+            if (SetReminder.IsVisible || !string.IsNullOrWhiteSpace(TaskName.Text)) 
             {
                 bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
 

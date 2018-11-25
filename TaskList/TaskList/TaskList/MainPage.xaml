@@ -9,7 +9,7 @@
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="ListView" HasUnevenRows="True">
+    <ListView x:Name="ListView" HasUnevenRows="True" SelectionMode="None">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -18,7 +18,7 @@
                         <Label Text="{Binding Reminder}" TextColor="Accent"/>
                     </StackLayout>
                     <ViewCell.ContextActions>
-                        <MenuItem x:Name="ContextDelete" Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True">
+                        <MenuItem x:Name="ContextDelete" Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" CommandParameter="{Binding .}">
                             <MenuItem.Icon>
                                 <OnPlatform Android="delete.png"/>
                             </MenuItem.Icon>
