@@ -4,22 +4,30 @@
              xmlns:local="clr-namespace:TaskList"
              x:Class="TaskList.MainPage"
              NavigationPage.HasBackButton="False"
-             Title="Home">
+             Title="Simple TaskList">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="ListView" HasUnevenRows="True" SelectionMode="None" SeparatorColor="Accent">
+    <ListView x:Name="ListView" HasUnevenRows="True" SelectionMode="None">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Padding="10">
-                        <Label Text="{Binding Title}" FontSize="Medium"/>
-                        <Label Text="{Binding Reminder}" TextColor="Accent"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="unchecked.png" WidthRequest="30" HeightRequest="30" Margin="10, 0, 0, 0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Checkbox_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                            <Label Text="{Binding Reminder}" TextColor="Accent"/>
+                        </StackLayout>
                     </StackLayout>
+
                     <ViewCell.ContextActions>
-                        <MenuItem x:Name="ContextDelete" Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" CommandParameter="{Binding .}">
+                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" CommandParameter="{Binding .}">
                             <MenuItem.Icon>
                                 <OnPlatform Android="delete.png"/>
                             </MenuItem.Icon>

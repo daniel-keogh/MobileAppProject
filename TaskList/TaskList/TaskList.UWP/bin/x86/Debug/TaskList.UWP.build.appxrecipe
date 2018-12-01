@@ -667,8 +667,14 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\cancel.png">
       <PackagePath>cancel.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\checked.png">
+      <PackagePath>checked.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\save.png">
       <PackagePath>save.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\unchecked.png">
+      <PackagePath>unchecked.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>

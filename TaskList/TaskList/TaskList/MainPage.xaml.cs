@@ -12,6 +12,7 @@ namespace TaskList
     public partial class MainPage : ContentPage
     {
         private ObservableCollection<AddNewItem> _items = new ObservableCollection<AddNewItem>();
+        private int tapCount = 0;
 
         public MainPage()
         {
@@ -64,6 +65,21 @@ namespace TaskList
         {
             var item = (sender as MenuItem).CommandParameter as AddNewItem;
             _items.Remove(item);
+        }
+
+        private void Checkbox_Tapped(object sender, EventArgs e)
+        {
+            tapCount++;
+            Image imageSender = (Image)sender;
+
+            if (tapCount % 2 == 0)
+            {
+                imageSender.Source = "unchecked.png";
+            }
+            else
+            {
+                imageSender.Source = "checked.png";
+            }
         }
     }
 }

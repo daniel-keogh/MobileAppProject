@@ -31,5 +31,7 @@ App.xbf
 MainPage.xbf
 TaskList.UWP.xr.xml
 cancel.png
+checked.png
 Properties\Default.rd.xml
 save.png
+unchecked.png
