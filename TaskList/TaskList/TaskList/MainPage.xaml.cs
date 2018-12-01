@@ -11,7 +11,7 @@ namespace TaskList
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<AddNewItem> _items;
+        private ObservableCollection<AddNewItem> _items = new ObservableCollection<AddNewItem>();
 
         public MainPage()
         {
@@ -22,7 +22,6 @@ namespace TaskList
         {
             InitializeComponent();
 
-            _items = new ObservableCollection<AddNewItem>();
             ListView.ItemsSource = _items;
 
             CreateNew(tName, tReminder);
@@ -32,14 +31,13 @@ namespace TaskList
         {
             InitializeComponent();
 
-            _items = new ObservableCollection<AddNewItem>();
             ListView.ItemsSource = _items;
 
             CreateNew(tName);
         }
 
         // Methods to create a new list item
-        private void CreateNew(string tName, string tReminder)
+        private void CreateNew(string tName, string tReminder) // with reminder
         {
             _items.Add(new AddNewItem()
             {
@@ -48,7 +46,7 @@ namespace TaskList
                 IsComplete = false
             });
         }
-        private void CreateNew(string tName)
+        private void CreateNew(string tName) // without reminder
         {
             _items.Add(new AddNewItem()
             {
@@ -56,7 +54,6 @@ namespace TaskList
                 IsComplete = false
             });
         }
-
 
         async private void CreateNewTask_Clicked(object sender, EventArgs e)
         {

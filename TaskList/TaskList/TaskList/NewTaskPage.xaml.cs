@@ -17,12 +17,12 @@ namespace TaskList
         public NewTaskPage()
         {
             InitializeComponent();
+            RemoveAndroidBackBtn();
         }
 
         protected override void OnAppearing()
         {
             // base.OnAppearing();
-            RemoveAndroidBackBtn();
             TaskName.Focus();
         }
 
@@ -45,7 +45,7 @@ namespace TaskList
             DisplayConfirmationString();
         }
 
-        void DisplayConfirmationString()
+        private void DisplayConfirmationString()
         {
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time + ".";
         }
@@ -55,7 +55,7 @@ namespace TaskList
             string tName = TaskName.Text;
             string tReminder = date + " at " + time;
 
-            if(!(string.IsNullOrWhiteSpace(TaskName.Text)))
+            if(!(string.IsNullOrWhiteSpace(tName)))
             {
                 if (SetReminder.IsVisible)
                 {
@@ -86,7 +86,7 @@ namespace TaskList
                 NavigationPage.SetHasBackButton(this, false);
         }
 
-        async void DisplayConfirmationPrompt()
+        async private void DisplayConfirmationPrompt()
         {
             // the alert only shows if any of the fields have been modified
             if (SetReminder.IsVisible || !string.IsNullOrWhiteSpace(TaskName.Text)) 
