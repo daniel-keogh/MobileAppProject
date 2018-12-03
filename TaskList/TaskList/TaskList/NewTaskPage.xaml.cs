@@ -13,6 +13,7 @@ namespace TaskList
     public partial class NewTaskPage : ContentPage
     {
         string date, time;
+        string tName, tReminder;
 
         public NewTaskPage()
         {
@@ -26,9 +27,60 @@ namespace TaskList
             TaskName.Focus();
         }
 
+        // override the back navigation button to display an alert
+        protected override bool OnBackButtonPressed()
+        {
+            DisplayConfirmationPrompt();
+            return true;
+        }
+
         private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
         {
 
+        }
+
+        // Because the alert will only display by using android's hardware button
+        private void RemoveAndroidBackBtn()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+                NavigationPage.SetHasBackButton(this, false);
+        }
+
+        async private void DisplayConfirmationPrompt()
+        {
+            // the alert only shows if any of the fields have been modified
+            if (!string.IsNullOrWhiteSpace(TaskName.Text))
+            {
+                bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
+
+                if (choice)
+                    await Navigation.PopAsync();
+            }
+            else
+            {
+                await Navigation.PopAsync();
+            }
+        }
+
+        async private void SaveTask_Clicked(object sender, EventArgs e)
+        {
+            tName = TaskName.Text;
+            tReminder = date + " at " + time;
+
+            if (!(string.IsNullOrWhiteSpace(tName)))
+            {
+                if (SetReminder.IsVisible)
+                {
+                    var todoItem = new AddNewItem(tName, tReminder);
+                    await App.Database.SaveItemAsync(todoItem);
+                }
+                else if (!SetReminder.IsVisible)
+                {
+                    var todoItem = new AddNewItem(tName);
+                    await App.Database.SaveItemAsync(todoItem);
+                }
+            }
+            await Navigation.PopAsync();
         }
 
         private void ReminderTime_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -46,58 +98,6 @@ namespace TaskList
         private void DisplayConfirmationString()
         {
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time + ".";
-        }
-
-        async private void SaveTask_Clicked(object sender, EventArgs e)
-        {
-            string tName = TaskName.Text;
-            string tReminder = date + " at " + time;
-
-            if(!(string.IsNullOrWhiteSpace(tName)))
-            {
-                if (SetReminder.IsVisible)
-                {
-                    await Navigation.PushAsync(new MainPage(tName, tReminder));
-                }
-                else if (!SetReminder.IsVisible)
-                {
-                    await Navigation.PushAsync(new MainPage(tName));
-                }
-            }
-            else
-            {
-                await Navigation.PopAsync();
-            }
-        }
-
-        // override the back navigation button to display an alert
-        protected override bool OnBackButtonPressed()
-        {
-            DisplayConfirmationPrompt();
-            return true;
-        }
-
-        // Because the alert will only display by using android's hardware button
-        private void RemoveAndroidBackBtn()
-        {
-            if (Device.RuntimePlatform == Device.Android)
-                NavigationPage.SetHasBackButton(this, false);
-        }
-
-        async private void DisplayConfirmationPrompt()
-        {
-            // the alert only shows if any of the fields have been modified
-            if (SetReminder.IsVisible || !string.IsNullOrWhiteSpace(TaskName.Text)) 
-            {
-                bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
-
-                if (choice)
-                    await Navigation.PopAsync();
-            }
-            else
-            {
-                await Navigation.PopAsync();
-            }
         }
     }
 }

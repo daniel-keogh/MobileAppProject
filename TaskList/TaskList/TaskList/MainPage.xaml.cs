@@ -4,66 +4,29 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskList.Models;
 using Xamarin.Forms;
 
 namespace TaskList
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<AddNewItem> _items = new ObservableCollection<AddNewItem>();
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        public MainPage(string tName, string tReminder)
+        protected override async void OnAppearing()
         {
-            InitializeComponent();
+            base.OnAppearing();
 
-            ListView.ItemsSource = _items;
-
-            CreateNew(tName, tReminder);
-        }
-
-        public MainPage(string tName)
-        {
-            InitializeComponent();
-
-            ListView.ItemsSource = _items;
-
-            CreateNew(tName);
-        }
-
-        // Methods to create a new list item
-        private void CreateNew(string tName, string tReminder) // with reminder
-        {
-            _items.Add(new AddNewItem()
-            {
-                Title = tName,
-                Reminder = tReminder,
-                IsComplete = false
-            });
-        }
-        private void CreateNew(string tName) // without reminder
-        {
-            _items.Add(new AddNewItem()
-            {
-                Title = tName,
-                IsComplete = false
-            });
+            // Reset the 'resume' id, since we just want to re-start here
+            ((App)Application.Current).ResumeAtTodoId = -1;
+            ListView.ItemsSource = await App.Database.GetItemsAsync();
         }
 
         async private void CreateNewTask_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewTaskPage());
-        }
-
-        private void ContextDelete_Clicked(object sender, EventArgs e)
-        {
-            var item = (sender as MenuItem).CommandParameter as AddNewItem;
-            _items.Remove(item);
         }
 
         private void Checkbox_Tapped(object sender, EventArgs e)
@@ -81,6 +44,24 @@ namespace TaskList
                 checkbox.Source = "checked.png";
                 //OnChecked();
             }
+        }
+
+        private void OnChecked()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnUnchecked()
+        {
+            throw new NotImplementedException();
+        }
+
+        async void ContextDelete_Clicked(object sender, EventArgs e)
+        {
+            var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
+            await App.Database.DeleteItemAsync(todoItem);
+
+            ListView.ItemsSource = await App.Database.GetItemsAsync(); // this refreshes the page
         }
     }
 }
