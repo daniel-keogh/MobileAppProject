@@ -33,9 +33,7 @@ namespace TaskList
 
         private void ReminderTime_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            string hours = ReminderTime.Time.ToString("hh");
-            string minutes = ReminderTime.Time.ToString("mm");
-            time = hours + ":" + minutes;
+            time = ReminderTime.Time.ToString("hh") + ":" + ReminderTime.Time.ToString("mm");
             DisplayConfirmationString();
         }
 

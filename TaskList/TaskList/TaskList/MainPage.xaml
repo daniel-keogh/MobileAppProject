@@ -15,12 +15,11 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal">
-                        <Image Source="unchecked.png" WidthRequest="30" HeightRequest="30" Margin="10, 0, 0, 0">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Checkbox_Tapped"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <StackLayout Padding="10">
+                        <ImageButton Source="unchecked.png" Clicked="Checkbox_Tapped" 
+                                     HorizontalOptions="Center" VerticalOptions="Center"
+                                     WidthRequest="25" HeightRequest="25" Margin="10, 0, 0, 0"/>
+
+                        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding Title}" FontSize="Medium"/>
                             <Label Text="{Binding Reminder}" TextColor="Accent"/>
                         </StackLayout>

@@ -68,16 +68,18 @@ namespace TaskList
 
         private void Checkbox_Tapped(object sender, EventArgs e)
         {
-            Image checkbox = (Image)sender;
+            ImageButton checkbox = (ImageButton)sender;
             FileImageSource imgSource = (FileImageSource)checkbox.Source;  // return the name of the image as a string
 
             if (imgSource == "checked.png")
             {
                 checkbox.Source = "unchecked.png";
+                //OnUnchecked();
             }
             else
             {
                 checkbox.Source = "checked.png";
+                //OnChecked();
             }
         }
     }
