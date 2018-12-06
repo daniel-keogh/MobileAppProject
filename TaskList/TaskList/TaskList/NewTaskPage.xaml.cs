@@ -12,8 +12,8 @@ namespace TaskList
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewTaskPage : ContentPage
     {
-        string date, time;
-        string tName, tReminder;
+        private string date, time;
+        private string tName, tReminder;
 
         public NewTaskPage()
         {
@@ -36,7 +36,7 @@ namespace TaskList
 
         private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
         {
-
+            // do stuff pertaining to notifications
         }
 
         // Because the alert will only display by using android's hardware button
@@ -49,9 +49,9 @@ namespace TaskList
         async private void DisplayConfirmationPrompt()
         {
             // the alert only shows if any of the fields have been modified
-            if (!string.IsNullOrWhiteSpace(TaskName.Text))
+            if (!string.IsNullOrWhiteSpace(TaskName.Text) || SetReminder.IsVisible)
             {
-                bool choice = await DisplayAlert("Warning", "Changes will be discarded.", "OK", "Cancel");
+                bool choice = await DisplayAlert("Warning", "Your changes will be discarded.", "OK", "Cancel");
 
                 if (choice)
                     await Navigation.PopAsync();
@@ -67,7 +67,7 @@ namespace TaskList
             tName = TaskName.Text;
             tReminder = date + " at " + time;
 
-            if (!(string.IsNullOrWhiteSpace(tName)))
+            if (!string.IsNullOrWhiteSpace(tName))
             {
                 if (SetReminder.IsVisible)
                 {
@@ -91,7 +91,7 @@ namespace TaskList
 
         private void ReminderDate_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            date = ReminderDate.Date.ToString("MMM d, yyyy");
+            date = ReminderDate.Date.ToString("MMM. d, yyyy");
             DisplayConfirmationString();
         }
 

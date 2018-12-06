@@ -15,9 +15,10 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal">
-                        <ImageButton Source="unchecked.png" Clicked="Checkbox_Tapped" 
+                        <ImageButton Source="{Binding CheckboxSource}" Clicked="Checkbox_Tapped"
                                      HorizontalOptions="Center" VerticalOptions="Center"
-                                     WidthRequest="28" HeightRequest="28" Margin="10, 0, 0, 0"/>
+                                     WidthRequest="28" HeightRequest="28" Margin="10, 0, 0, 0"
+                                     CommandParameter="{Binding .}"/>
 
                         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding Title}" FontSize="Medium"/>

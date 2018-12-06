@@ -29,7 +29,7 @@ namespace TaskList
             }
         }
 
-        public int ResumeAtTodoId { get; set; }
+        // public int ResumeAtTodoId { get; set; }
 
         protected override void OnStart()
         {

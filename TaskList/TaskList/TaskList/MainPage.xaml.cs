@@ -20,7 +20,7 @@ namespace TaskList
             base.OnAppearing();
 
             // Reset the 'resume' id, since we just want to re-start here
-            ((App)Application.Current).ResumeAtTodoId = -1;
+            //((App)Application.Current).ResumeAtTodoId = -1;
             ListView.ItemsSource = await App.Database.GetItemsAsync();
         }
 
@@ -34,29 +34,22 @@ namespace TaskList
             ImageButton checkbox = (ImageButton)sender;
             FileImageSource imgSource = (FileImageSource)checkbox.Source;  // return the name of the image as a string
 
+            var todoItem = (sender as ImageButton).CommandParameter as AddNewItem;
+
             if (imgSource == "checked.png")
             {
                 checkbox.Source = "unchecked.png";
-                //OnUnchecked();
+                App.Database.OnChecked(imgSource, todoItem);
+
             }
             else
             {
                 checkbox.Source = "checked.png";
-                //OnChecked();
+                App.Database.OnChecked(imgSource, todoItem);
             }
         }
 
-        private void OnChecked()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnUnchecked()
-        {
-            throw new NotImplementedException();
-        }
-
-        async void ContextDelete_Clicked(object sender, EventArgs e)
+        async private void ContextDelete_Clicked(object sender, EventArgs e)
         {
             var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
             await App.Database.DeleteItemAsync(todoItem);

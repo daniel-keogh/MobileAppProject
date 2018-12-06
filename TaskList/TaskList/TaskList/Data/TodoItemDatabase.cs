@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace TaskList
 {
@@ -21,15 +22,18 @@ namespace TaskList
             return database.Table<AddNewItem>().ToListAsync();
         }
 
+        /*
         public Task<List<AddNewItem>> GetItemsNotDoneAsync()
         {
             return database.QueryAsync<AddNewItem>("SELECT * FROM [AddNewItem] WHERE [IsComplete] = 0");
         }
+        
 
         public Task<AddNewItem> GetItemAsync(int id)
         {
             return database.Table<AddNewItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
+        */
 
         public Task<int> SaveItemAsync(AddNewItem item)
         {
@@ -46,6 +50,22 @@ namespace TaskList
         public Task<int> DeleteItemAsync(AddNewItem item)
         {
             return database.DeleteAsync(item);
+        }
+
+        public void OnChecked(FileImageSource imgSrc, AddNewItem item)
+        {
+            if (imgSrc == "checked.png")
+            {
+                item.IsComplete = false;
+                item.CheckboxSource = "unchecked.png";
+            }
+            else
+            {
+                item.IsComplete = true;
+                item.CheckboxSource = "checked.png";
+            }
+
+            SaveItemAsync(item);
         }
     }
 }
