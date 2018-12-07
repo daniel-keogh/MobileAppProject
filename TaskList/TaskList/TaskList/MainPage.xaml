@@ -10,7 +10,7 @@
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="ListView" HasUnevenRows="True" SelectionMode="None">
+    <ListView x:Name="ListView" HasUnevenRows="True" ItemSelected="ListView_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

@@ -670,6 +670,12 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\checked.png">
       <PackagePath>checked.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\delete.png">
+      <PackagePath>delete.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\done.png">
+      <PackagePath>done.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\save.png">
       <PackagePath>save.png</PackagePath>
     </AppxPackagedFile>

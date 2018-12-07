@@ -32,20 +32,18 @@ namespace TaskList
         private void Checkbox_Tapped(object sender, EventArgs e)
         {
             ImageButton checkbox = (ImageButton)sender;
-            FileImageSource imgSource = (FileImageSource)checkbox.Source;  // return the name of the image as a string
 
             var todoItem = (sender as ImageButton).CommandParameter as AddNewItem;
 
-            if (imgSource == "checked.png")
+            if (todoItem.CheckboxSource == "checked.png")
             {
                 checkbox.Source = "unchecked.png";
-                App.Database.OnChecked(imgSource, todoItem);
-
+                App.Database.OnChecked(todoItem);
             }
             else
             {
                 checkbox.Source = "checked.png";
-                App.Database.OnChecked(imgSource, todoItem);
+                App.Database.OnChecked(todoItem);
             }
         }
 
@@ -55,6 +53,17 @@ namespace TaskList
             await App.Database.DeleteItemAsync(todoItem);
 
             ListView.ItemsSource = await App.Database.GetItemsAsync(); // this refreshes the page
+        }
+
+        async private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as AddNewItem;
+            if (item == null)
+                return;
+            await Navigation.PushAsync(new ItemDetailPage(item));
+
+            // Manually deselect item.
+            ListView.SelectedItem = null;
         }
     }
 }

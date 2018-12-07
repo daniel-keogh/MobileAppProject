@@ -133,6 +133,8 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="cancel.png" />
     <Content Include="checked.png" />
+    <Content Include="delete.png" />
+    <Content Include="done.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="save.png" />
     <Content Include="unchecked.png" />

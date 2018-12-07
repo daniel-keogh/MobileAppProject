@@ -52,19 +52,14 @@ namespace TaskList
             return database.DeleteAsync(item);
         }
 
-        public void OnChecked(FileImageSource imgSrc, AddNewItem item)
+        public void OnChecked(AddNewItem item)
         {
-            if (imgSrc == "checked.png")
-            {
-                item.IsComplete = false;
-                item.CheckboxSource = "unchecked.png";
-            }
+            if (item.IsComplete)
+                item.CheckboxSource = "unchecked.png";       
             else
-            {
-                item.IsComplete = true;
-                item.CheckboxSource = "checked.png";
-            }
+                item.CheckboxSource = "checked.png";       
 
+            item.IsComplete = !item.IsComplete;
             SaveItemAsync(item);
         }
     }
