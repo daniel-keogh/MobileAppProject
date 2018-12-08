@@ -17,6 +17,8 @@ namespace TaskList
         // constructors
         public AddNewItem()
         {
+            Title = null;
+            Reminder = null;
             IsComplete = false;
             CheckboxSource = "unchecked.png";
         }
@@ -24,6 +26,7 @@ namespace TaskList
         public AddNewItem(string Title)
         {
             this.Title = Title;
+            Reminder = null;
             IsComplete = false;
             CheckboxSource = "unchecked.png";
         }

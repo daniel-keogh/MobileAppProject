@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TaskList"
+             x:Class="TaskList.MainPage"
+             Title="Simple TaskList">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
+        <ToolbarItem Text="Refresh" Clicked="ListView_Refreshing" Order="Secondary"/>
+    </TabbedPage.ToolbarItems>
+
+    <!-- Tabbed Pages -->
+    <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="ContentPage">
+        <StackLayout>
+            <ListView ItemTemplate="{StaticResource ListTemplate}" 
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="ListView_Refreshing"
+                  x:Name="ListViewAll" 
+                  HasUnevenRows="True" 
+                  ItemSelected="ListView_ItemSelected"/>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Complete" Appearing="CompTab_Appearing">
+        <ListView ItemTemplate="{StaticResource ListTemplate}" 
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="ListView_Refreshing"
+                  x:Name="ListViewComp" 
+                  HasUnevenRows="True" 
+                  ItemSelected="ListView_ItemSelected"/>
+    </ContentPage>
+
+    <ContentPage Title="Uncomplete" Appearing="UnCompTab_Appearing">
+        <ListView ItemTemplate="{StaticResource ListTemplate}" 
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="ListView_Refreshing"
+                  x:Name="ListViewUnComp" 
+                  HasUnevenRows="True" 
+                  ItemSelected="ListView_ItemSelected"/>
+    </ContentPage>
+
+    <!-- ListView ItemTemplate -->
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ListTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <ImageButton Source="{Binding CheckboxSource}" Clicked="Checkbox_Tapped"
+                                     HorizontalOptions="Center" VerticalOptions="Center"
+                                     WidthRequest="28" HeightRequest="28" Margin="10, 0, 0, 0"
+                                     CommandParameter="{Binding .}"/>
+
+                        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                            <Label Text="{Binding Reminder}" TextColor="Accent"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" CommandParameter="{Binding .}">
+                            <MenuItem.Icon>
+                                <OnPlatform Android="delete.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ViewCell.ContextActions>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+</TabbedPage>

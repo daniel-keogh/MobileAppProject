@@ -2,7 +2,6 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Deb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.csprojAssemblyReference.cache
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.csproj.CoreCompileInputs.cache
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.AssemblyInfoInputs.cache
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.AssemblyInfo.cs
@@ -10,5 +9,6 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Deb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.dll
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.pdb
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\NewTaskPage.xaml.g.cs
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\ItemDetailPage.xaml.g.cs
+C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
+C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\NewTaskPage.xaml.g.cs
