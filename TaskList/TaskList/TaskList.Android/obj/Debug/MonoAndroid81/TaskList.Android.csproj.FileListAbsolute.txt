@@ -4,7 +4,6 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\com.companyname-Signed.apk
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\TaskList.dll
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\TaskList.pdb
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\TaskList.dll.mdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\TaskList.Android.csprojAssemblyReference.cache
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\res.flag
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\TaskList.Android.csproj.CoreCompileInputs.cache
@@ -82,6 +81,7 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\FormsViewGroup.dll.mdb
+C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\TaskList.dll.mdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\linksrc\TaskList.Android.pdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\linksrc\FormsViewGroup.pdb

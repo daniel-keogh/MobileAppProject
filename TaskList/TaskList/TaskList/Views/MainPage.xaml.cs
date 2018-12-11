@@ -19,29 +19,29 @@ namespace TaskList
         {
             base.OnAppearing();
 
-            ListViewAll.ItemsSource = await App.Database.GetItemsAsync();
-            ListViewComp.ItemsSource = await App.Database.GetItemsDoneAsync();
-            ListViewUnComp.ItemsSource = await App.Database.GetItemsNotDoneAsync();
+            ListAll.ItemsSource = await App.Database.GetItemsAsync();
+            ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
+            ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
         }
 
 
         private async void AllTab_Appearing(object sender, EventArgs e)
         {
-            ListViewAll.ItemsSource = await App.Database.GetItemsAsync();
+            ListAll.ItemsSource = await App.Database.GetItemsAsync();
         }
 
-        private async void CompTab_Appearing(object sender, EventArgs e)
+        private async void TodayTab_Appearing(object sender, EventArgs e)
         {
-            ListViewComp.ItemsSource = await App.Database.GetItemsDoneAsync();
+            ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
         }
 
-        private async void UnCompTab_Appearing(object sender, EventArgs e)
+        private async void ThisWeekTab_Appearing(object sender, EventArgs e)
         {
-            ListViewUnComp.ItemsSource = await App.Database.GetItemsNotDoneAsync();
+            ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
         }
 
 
-        async private void CreateNewTask_Clicked(object sender, EventArgs e)
+        private async void CreateNewTask_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewTaskPage());
         }
@@ -63,15 +63,37 @@ namespace TaskList
             App.Database.OnChecked(todoItem);
         }
 
-        async private void ContextDelete_Clicked(object sender, EventArgs e)
+        private async void ContextDelete_Clicked(object sender, EventArgs e)
         {
             var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
             await App.Database.DeleteItemAsync(todoItem);
 
-            OnAppearing(); // refresh the page
+            ListView_Refreshing(sender, e); // refresh the page
         }
 
-        async private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListView_DeleteAll(object sender, EventArgs e)
+        {
+            bool choice = await DisplayAlert("Warning", "Are you sure you want to delete everything?\n\nThis action is irreversible.", "Yes", "No");
+
+            if (choice)
+            {
+                await App.Database.DeleteAllItemsAsync();
+                ListView_Refreshing(sender, e);
+            }
+        }
+
+        private async void ListView_DeleteDone(object sender, EventArgs e)
+        {
+            bool choice = await DisplayAlert("Are you sure?", "Delete all completed items?", "Yes", "No");
+
+            if (choice)
+            {
+                await App.Database.DeleteDoneItemsAsync();
+                ListView_Refreshing(sender, e);
+            }
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as AddNewItem;
             if (item == null)
@@ -80,43 +102,43 @@ namespace TaskList
             await Navigation.PushAsync(new ItemDetailPage(item));
 
             // Manually deselect item.
-            if (sender.Equals(ListViewComp))
+            if (sender.Equals(ListToday))
             {
-                ListViewComp.SelectedItem = null;
+                ListToday.SelectedItem = null;
             }
-            else if (sender.Equals(ListViewUnComp))
+            else if (sender.Equals(ListThisWeek))
             {
-                ListViewUnComp.SelectedItem = null;
+                ListThisWeek.SelectedItem = null;
             }
             else
             {
-                ListViewAll.SelectedItem = null;
+                ListAll.SelectedItem = null;
             }
         }
 
         private async void ListView_Refreshing(object sender, EventArgs e)
         {
-            if (sender.Equals(ListViewComp))
+            if (sender.Equals(ListToday))
             {
-                ListViewComp.ItemsSource = await App.Database.GetItemsDoneAsync();
-                ListViewComp.EndRefresh();
+                ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
+                ListToday.EndRefresh();
             }
-            else if (sender.Equals(ListViewUnComp))
+            else if (sender.Equals(ListThisWeek))
             {
-                ListViewUnComp.ItemsSource = await App.Database.GetItemsNotDoneAsync();
-                ListViewUnComp.EndRefresh();
+                ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
+                ListThisWeek.EndRefresh();
             }
-            else if (sender.Equals(ListViewAll))
+            else if (sender.Equals(ListAll))
             {
-                ListViewAll.ItemsSource = await App.Database.GetItemsAsync();
-                ListViewAll.EndRefresh();
+                ListAll.ItemsSource = await App.Database.GetItemsAsync();
+                ListAll.EndRefresh();
             }
             else // if the toolbar button is clicked
             {
                 OnAppearing();
-                ListViewAll.EndRefresh();
-                ListViewComp.EndRefresh();
-                ListViewUnComp.EndRefresh();
+                ListAll.EndRefresh();
+                ListToday.EndRefresh();
+                ListThisWeek.EndRefresh();
             }
         }
     }

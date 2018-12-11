@@ -8,34 +8,34 @@
     <TabbedPage.ToolbarItems>
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
         <ToolbarItem Text="Refresh" Clicked="ListView_Refreshing" Order="Secondary"/>
+        <ToolbarItem Text="Delete Completed" Clicked="ListView_DeleteDone" Order="Secondary"/>
+        <ToolbarItem Text="Delete All" Clicked="ListView_DeleteAll" Order="Secondary"/>
     </TabbedPage.ToolbarItems>
 
     <!-- Tabbed Pages -->
     <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="ContentPage">
-        <StackLayout>
-            <ListView ItemTemplate="{StaticResource ListTemplate}" 
-                  IsPullToRefreshEnabled="True"
-                  Refreshing="ListView_Refreshing"
-                  x:Name="ListViewAll" 
-                  HasUnevenRows="True" 
-                  ItemSelected="ListView_ItemSelected"/>
-        </StackLayout>
+        <ListView ItemTemplate="{StaticResource ListTemplate}" 
+         	IsPullToRefreshEnabled="True"
+            Refreshing="ListView_Refreshing"
+            x:Name="ListAll" 
+            HasUnevenRows="True" 
+            ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
-    <ContentPage Title="Complete" Appearing="CompTab_Appearing">
+    <ContentPage Title="Today" Appearing="TodayTab_Appearing">
         <ListView ItemTemplate="{StaticResource ListTemplate}" 
                   IsPullToRefreshEnabled="True"
                   Refreshing="ListView_Refreshing"
-                  x:Name="ListViewComp" 
+                  x:Name="ListToday" 
                   HasUnevenRows="True" 
                   ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
-    <ContentPage Title="Uncomplete" Appearing="UnCompTab_Appearing">
+    <ContentPage Title="Next 7 Days" Appearing="ThisWeekTab_Appearing">
         <ListView ItemTemplate="{StaticResource ListTemplate}" 
                   IsPullToRefreshEnabled="True"
                   Refreshing="ListView_Refreshing"
-                  x:Name="ListViewUnComp" 
+                  x:Name="ListThisWeek" 
                   HasUnevenRows="True" 
                   ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
@@ -58,11 +58,8 @@
                     </StackLayout>
 
                     <ViewCell.ContextActions>
-                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" CommandParameter="{Binding .}">
-                            <MenuItem.Icon>
-                                <OnPlatform Android="delete.png"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
+                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" 
+                                  CommandParameter="{Binding .}" Icon="{OnPlatform Android=delete.png}"/>
                     </ViewCell.ContextActions>
                 </ViewCell>
             </DataTemplate>

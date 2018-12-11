@@ -22,22 +22,22 @@ namespace TaskList
             return database.Table<AddNewItem>().ToListAsync();
         }
 
-        public Task<List<AddNewItem>> GetItemsDoneAsync()
+        public Task<List<AddNewItem>> GetItemsTodayAsync()
         {
-            return database.QueryAsync<AddNewItem>("SELECT * FROM [AddNewItem] WHERE [IsComplete] = 1");
+            string todaysDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "SELECT * FROM [AddNewItem] WHERE [ReminderDate] = '" + todaysDate + "'";
+            return database.QueryAsync<AddNewItem>(sql);
         }
 
-        public Task<List<AddNewItem>> GetItemsNotDoneAsync()
+        public Task<List<AddNewItem>> GetItemsThisWeekAsync()
         {
-            return database.QueryAsync<AddNewItem>("SELECT * FROM [AddNewItem] WHERE [IsComplete] = 0");
+            string tomorrowsDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+            string nextWeekDate = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
+            string sql = "SELECT * FROM [AddNewItem] WHERE [ReminderDate] BETWEEN '" + tomorrowsDate + "' AND '" + nextWeekDate + "'";
+            return database.QueryAsync<AddNewItem>(sql);
         }
-        
-        /*
-        public Task<AddNewItem> GetItemAsync(int id)
-        {
-            return database.Table<AddNewItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }
-        */
 
         public Task<int> SaveItemAsync(AddNewItem item)
         {
@@ -56,12 +56,22 @@ namespace TaskList
             return database.DeleteAsync(item);
         }
 
+        public Task<int> DeleteAllItemsAsync()
+        {
+            return database.DeleteAllAsync<AddNewItem>();
+        }
+
+        public Task<int> DeleteDoneItemsAsync()
+        {
+            return database.Table<AddNewItem>().Where(i => i.IsComplete == true).DeleteAsync();
+        }
+
         public void OnChecked(AddNewItem item)
         {
             if (item.IsComplete)
-                item.CheckboxSource = "unchecked.png";       
+                item.CheckboxSource = "unchecked.png";
             else
-                item.CheckboxSource = "checked.png";       
+                item.CheckboxSource = "checked.png";
 
             item.IsComplete = !item.IsComplete;
             SaveItemAsync(item);

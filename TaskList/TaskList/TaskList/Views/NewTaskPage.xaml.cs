@@ -47,7 +47,7 @@ namespace TaskList
                 NavigationPage.SetHasBackButton(this, false);
         }
 
-        async private void DisplayConfirmationPrompt()
+        private async void DisplayConfirmationPrompt()
         {
             // the alert only shows if any of the fields have been modified
             if (!string.IsNullOrWhiteSpace(TaskName.Text) || SetReminder.IsVisible)
@@ -63,7 +63,7 @@ namespace TaskList
             }
         }
 
-        async private void SaveTask_Clicked(object sender, EventArgs e)
+        private async void SaveTask_Clicked(object sender, EventArgs e)
         {
             tName = TaskName.Text;
             tReminder = date + " at " + time;
@@ -72,7 +72,7 @@ namespace TaskList
             {
                 if (SetReminder.IsVisible)
                 {
-                    var todoItem = new AddNewItem(tName, tReminder);
+                    var todoItem = new AddNewItem(tName, tReminder, GetFullDate());
                     await App.Database.SaveItemAsync(todoItem);
                 }
                 else if (!SetReminder.IsVisible)
@@ -92,13 +92,19 @@ namespace TaskList
 
         private void ReminderDate_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            date = ReminderDate.Date.ToString("MMM. d, yyyy");
+            date = ReminderDate.Date.ToString("ddd, d MMM. yyyy");
             DisplayConfirmationString();
         }
 
         private void DisplayConfirmationString()
         {
-            ChosenDateTime.Text = "Reminder set for " + date + " at " + time + ".";
+            ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
+        }
+
+        private string GetFullDate()
+        {
+            string fullDate;
+            return fullDate = ReminderDate.Date.ToString("yyyy-MM-dd");
         }
     }
 }
