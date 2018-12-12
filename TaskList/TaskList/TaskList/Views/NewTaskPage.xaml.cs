@@ -92,7 +92,7 @@ namespace TaskList
 
         private void ReminderDate_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            date = ReminderDate.Date.ToString("ddd, d MMM. yyyy");
+            date = ReminderDate.Date.ToString("ddd, d MMM yyyy");
             DisplayConfirmationString();
         }
 

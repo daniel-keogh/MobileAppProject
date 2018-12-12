@@ -30,8 +30,6 @@ namespace TaskList
             }
         }
 
-        // public int ResumeAtTodoId { get; set; }
-
         protected override void OnStart()
         {
             // Handle when your app starts

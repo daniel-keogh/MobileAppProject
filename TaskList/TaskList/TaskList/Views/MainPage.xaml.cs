@@ -10,6 +10,10 @@ namespace TaskList
 {
     public partial class MainPage : TabbedPage
     {
+        private ObservableCollection<AddNewItem> _allItems;
+        private ObservableCollection<AddNewItem> _todayItems;
+        private ObservableCollection<AddNewItem> _thisWeekItems;
+
         public MainPage()
         {
             InitializeComponent();
@@ -19,25 +23,46 @@ namespace TaskList
         {
             base.OnAppearing();
 
-            ListAll.ItemsSource = await App.Database.GetItemsAsync();
-            ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
-            ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
+            await LoadAllTab();
+            await LoadTodayTab();
+            await LoadThisWeekTab();
         }
-
 
         private async void AllTab_Appearing(object sender, EventArgs e)
         {
-            ListAll.ItemsSource = await App.Database.GetItemsAsync();
+            await LoadAllTab();
         }
 
         private async void TodayTab_Appearing(object sender, EventArgs e)
         {
-            ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
+            await LoadTodayTab();
         }
 
         private async void ThisWeekTab_Appearing(object sender, EventArgs e)
         {
-            ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
+            await LoadThisWeekTab();
+        }
+
+
+        private async Task LoadAllTab()
+        {
+            var allItems = await App.Database.GetItemsAsync();
+            _allItems = new ObservableCollection<AddNewItem>(allItems);
+            ListAll.ItemsSource = _allItems;
+        }
+
+        private async Task LoadTodayTab()
+        {
+            var todayItems = await App.Database.GetItemsTodayAsync();
+            _todayItems = new ObservableCollection<AddNewItem>(todayItems);
+            ListToday.ItemsSource = _todayItems;
+        }
+
+        private async Task LoadThisWeekTab()
+        {
+            var thisWeekItems = await App.Database.GetItemsThisWeekAsync();
+            _thisWeekItems = new ObservableCollection<AddNewItem>(thisWeekItems);
+            ListThisWeek.ItemsSource = _thisWeekItems;
         }
 
 
@@ -66,14 +91,17 @@ namespace TaskList
         private async void ContextDelete_Clicked(object sender, EventArgs e)
         {
             var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
-            await App.Database.DeleteItemAsync(todoItem);
 
-            ListView_Refreshing(sender, e); // refresh the page
+            _allItems.Remove(todoItem);
+            _todayItems.Remove(todoItem);
+            _thisWeekItems.Remove(todoItem);
+
+            await App.Database.DeleteItemAsync(todoItem);
         }
 
         private async void ListView_DeleteAll(object sender, EventArgs e)
         {
-            bool choice = await DisplayAlert("Warning", "Are you sure you want to delete everything?\n\nThis action is irreversible.", "Yes", "No");
+            bool choice = await DisplayAlert("Warning", "Are you sure you want to delete everything?\n\nThis action is irreversible.\n", "Yes", "No");
 
             if (choice)
             {
@@ -118,24 +146,27 @@ namespace TaskList
 
         private async void ListView_Refreshing(object sender, EventArgs e)
         {
-            if (sender.Equals(ListToday))
+            if (sender.Equals(_todayItems))
             {
-                ListToday.ItemsSource = await App.Database.GetItemsTodayAsync();
+                await LoadTodayTab();
                 ListToday.EndRefresh();
             }
-            else if (sender.Equals(ListThisWeek))
+            else if (sender.Equals(_thisWeekItems))
             {
-                ListThisWeek.ItemsSource = await App.Database.GetItemsThisWeekAsync();
+                await LoadThisWeekTab();
                 ListThisWeek.EndRefresh();
             }
-            else if (sender.Equals(ListAll))
+            else if (sender.Equals(_allItems))
             {
-                ListAll.ItemsSource = await App.Database.GetItemsAsync();
+                await LoadAllTab();
                 ListAll.EndRefresh();
             }
             else // if the toolbar button is clicked
             {
-                OnAppearing();
+                await LoadAllTab();
+                await LoadTodayTab();
+                await LoadThisWeekTab();
+
                 ListAll.EndRefresh();
                 ListToday.EndRefresh();
                 ListThisWeek.EndRefresh();
