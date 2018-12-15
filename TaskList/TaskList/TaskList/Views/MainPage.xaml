@@ -6,6 +6,7 @@
              Title="Simple TaskList">
 
     <TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="search.png" Text="Search" Clicked="SearchIcon_Clicked" Order="Primary"/>
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
         <ToolbarItem Text="Refresh" Clicked="ListView_Refreshing" Order="Secondary"/>
         <ToolbarItem Text="Delete Completed" Clicked="ListView_DeleteDone" Order="Secondary"/>
@@ -13,13 +14,30 @@
     </TabbedPage.ToolbarItems>
 
     <!-- Tabbed Pages -->
-    <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="ContentPage">
-        <ListView ItemTemplate="{StaticResource ListTemplate}" 
-         	IsPullToRefreshEnabled="True"
-            Refreshing="ListView_Refreshing"
-            x:Name="ListAll" 
-            HasUnevenRows="True" 
-            ItemSelected="ListView_ItemSelected"/>
+    <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="AllTab">
+        <StackLayout>
+            <StackLayout IsVisible="False" x:Name="SearchSL" Orientation="Horizontal" Padding="10, 20">
+                <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged"
+                           HorizontalOptions="FillAndExpand" x:Name="SearchList"/>
+                <Image Source="cancel.png"
+                       VerticalOptions="Center"
+                       IsVisible="{OnPlatform Android=False, UWP=True}"
+                       HeightRequest="20" WidthRequest="20" 
+                       Margin="10, 0, 0, 0"
+                       BackgroundColor="Red">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSearchButton_Clicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            
+            <ListView ItemTemplate="{StaticResource ListTemplate}" 
+         	    IsPullToRefreshEnabled="True"
+                Refreshing="ListView_Refreshing"
+                x:Name="ListAll" 
+                HasUnevenRows="True" 
+                ItemSelected="ListView_ItemSelected"/>
+        </StackLayout>
     </ContentPage>
 
     <ContentPage Title="Today" Appearing="TodayTab_Appearing">

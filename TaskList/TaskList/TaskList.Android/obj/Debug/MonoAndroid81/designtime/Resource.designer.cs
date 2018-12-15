@@ -3006,10 +3006,10 @@ namespace TaskList.Droid
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
 			// aapt resource value: 0x7F010006
-			public const int remind = 2130771974;
+			public const int save = 2130771974;
 			
 			// aapt resource value: 0x7F010007
-			public const int save = 2130771975;
+			public const int search = 2130771975;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;

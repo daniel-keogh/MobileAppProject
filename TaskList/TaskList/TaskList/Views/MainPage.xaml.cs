@@ -13,6 +13,7 @@ namespace TaskList
         private ObservableCollection<AddNewItem> _allItems;
         private ObservableCollection<AddNewItem> _todayItems;
         private ObservableCollection<AddNewItem> _thisWeekItems;
+        private ObservableCollection<AddNewItem> _searchItems;
 
         public MainPage()
         {
@@ -43,9 +44,10 @@ namespace TaskList
             await LoadThisWeekTab();
         }
 
-
         private async Task LoadAllTab()
         {
+            HideSearchBar();
+
             var allItems = await App.Database.GetItemsAsync();
             _allItems = new ObservableCollection<AddNewItem>(allItems);
             ListAll.ItemsSource = _allItems;
@@ -65,6 +67,48 @@ namespace TaskList
             ListThisWeek.ItemsSource = _thisWeekItems;
         }
 
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var searchItems = await App.Database.GetItemAsync(e.NewTextValue);
+            _searchItems = new ObservableCollection<AddNewItem>(searchItems);
+            ListAll.ItemsSource = _searchItems;
+        }
+
+        private void SearchIcon_Clicked(object sender, EventArgs e)
+        {
+            CurrentPage = AllTab;
+            SearchSL.IsVisible = true;
+            SearchList.Text = null;
+            SearchList.Focus();
+        }
+
+        private void CloseSearchButton_Clicked(object sender, EventArgs e)
+        {
+            HideSearchBar();
+        }
+
+        private void HideSearchBar()
+        {
+            if (SearchSL.IsVisible)
+            {
+                SearchList.Text = null;
+                SearchSL.IsVisible = false;
+            }
+        }
+
+        // Hide the searchbar if it is visible, if not then close the app
+        protected override bool OnBackButtonPressed()
+        {
+            if (SearchSL.IsVisible)
+            {
+                HideSearchBar();
+                return true;
+            }
+            else
+            {
+                return false;
+            }        
+        }
 
         private async void CreateNewTask_Clicked(object sender, EventArgs e)
         {

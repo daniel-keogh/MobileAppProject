@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-12T10:39:02.090</Modified>
+      <Modified>2018-12-15T20:48:01.722</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\TaskList.UWP.exe">
       <PackagePath>entrypoint\TaskList.UWP.exe</PackagePath>
-      <Modified>2018-12-12T10:39:00.132</Modified>
+      <Modified>2018-12-15T20:47:59.874</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.9\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -737,7 +737,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll">
       <PackagePath>TaskList.dll</PackagePath>
-      <Modified>2018-12-12T10:38:50.170</Modified>
+      <Modified>2018-12-15T20:47:49.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\add.png">
       <PackagePath>add.png</PackagePath>
@@ -894,9 +894,17 @@
       <PackagePath>done.png</PackagePath>
       <Modified>2018-12-07T16:17:49.709</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\refresh.png">
+      <PackagePath>refresh.png</PackagePath>
+      <Modified>2018-12-14T23:48:22.799</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\save.png">
       <PackagePath>save.png</PackagePath>
       <Modified>2018-11-02T10:29:45.761</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\search.png">
+      <PackagePath>search.png</PackagePath>
+      <Modified>2018-12-14T23:36:46.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\unchecked.png">
       <PackagePath>unchecked.png</PackagePath>
@@ -912,11 +920,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-12-12T10:38:59.647</Modified>
+      <Modified>2018-12-15T20:47:59.342</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-12-12T10:38:59.648</Modified>
+      <Modified>2018-12-15T20:47:59.344</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -929,11 +937,11 @@
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-10T22:34:08.931</Modified>
+      <Modified>2018-12-14T23:41:55.157</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\TaskList.UWP.exe">
       <PackagePath>TaskList.UWP.exe</PackagePath>
-      <Modified>2018-12-12T10:39:02.074</Modified>
+      <Modified>2018-12-15T20:48:01.707</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

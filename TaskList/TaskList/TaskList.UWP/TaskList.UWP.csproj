@@ -136,7 +136,9 @@
     <Content Include="delete.png" />
     <Content Include="done.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="refresh.png" />
     <Content Include="save.png" />
+    <Content Include="search.png" />
     <Content Include="unchecked.png" />
   </ItemGroup>
   <ItemGroup>

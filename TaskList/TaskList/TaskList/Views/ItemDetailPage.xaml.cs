@@ -16,6 +16,15 @@ namespace TaskList
             InitializeComponent();
             BindingContext = item;
             ShowDateYesOrNo(item);
+            ShowStatus(item);
+        }
+
+        private void ShowStatus(AddNewItem item)
+        {
+            if (item.IsComplete)
+                StatusLabel.Text = "Complete";
+            else
+                StatusLabel.Text = "Uncomplete";
         }
 
         private void ShowDateYesOrNo(AddNewItem item)

@@ -22,6 +22,15 @@ namespace TaskList
             return database.Table<AddNewItem>().ToListAsync();
         }
 
+        // Search Function
+        public Task<List<AddNewItem>> GetItemAsync(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+                return GetItemsAsync();
+
+            return database.Table<AddNewItem>().Where(s => s.Title.Contains(searchText)).ToListAsync();
+        }
+
         public Task<List<AddNewItem>> GetItemsTodayAsync()
         {
             string todaysDate = DateTime.Now.ToString("yyyy-MM-dd");

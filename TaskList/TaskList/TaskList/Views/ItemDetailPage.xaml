@@ -10,10 +10,12 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Title:" FontSize="Medium" TextColor="Accent"/>
+        <StackLayout Spacing="20" Padding="20">
+            <Label Text="Title:" FontSize="Medium" TextColor="Accent" TextDecorations="Underline"/>
             <Label Text="{Binding Title}" FontSize="Small"/>
-            <Label Text="Due Date:" FontSize="Medium" IsVisible="False" x:Name="DueDate" TextColor="Accent"/>
+            <Label Text="Status:" FontSize="Medium" x:Name="Status" TextColor="Accent" TextDecorations="Underline"/>
+            <Label x:Name="StatusLabel" FontSize="Small"/>
+            <Label Text="Due Date:" FontSize="Medium" IsVisible="False" x:Name="DueDate" TextColor="Accent" TextDecorations="Underline"/>
             <Label Text="{Binding Reminder}" FontSize="Small"/>
         </StackLayout>
     </ContentPage.Content>
