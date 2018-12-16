@@ -3322,8 +3322,8 @@ containing a value of this type.
         public static int notification_template_icon_low_bg=0x7f020135;
         public static int notification_tile_bg=0x7f02012d;
         public static int notify_panel_notification_icon_bg=0x7f02012e;
-        public static int remind=0x7f02012f;
-        public static int save=0x7f020130;
+        public static int save=0x7f02012f;
+        public static int search=0x7f020130;
         public static int tooltip_frame_dark=0x7f020131;
         public static int tooltip_frame_light=0x7f020132;
         public static int unchecked=0x7f020133;

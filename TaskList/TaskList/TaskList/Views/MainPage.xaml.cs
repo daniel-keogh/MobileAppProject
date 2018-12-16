@@ -13,7 +13,6 @@ namespace TaskList
         private ObservableCollection<AddNewItem> _allItems;
         private ObservableCollection<AddNewItem> _todayItems;
         private ObservableCollection<AddNewItem> _thisWeekItems;
-        private ObservableCollection<AddNewItem> _searchItems;
 
         public MainPage()
         {
@@ -70,7 +69,7 @@ namespace TaskList
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             var searchItems = await App.Database.GetItemAsync(e.NewTextValue);
-            _searchItems = new ObservableCollection<AddNewItem>(searchItems);
+            ObservableCollection<AddNewItem> _searchItems = new ObservableCollection<AddNewItem>(searchItems);
             ListAll.ItemsSource = _searchItems;
         }
 

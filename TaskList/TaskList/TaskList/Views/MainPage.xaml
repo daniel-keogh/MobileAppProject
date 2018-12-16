@@ -13,52 +13,47 @@
         <ToolbarItem Text="Delete All" Clicked="ListView_DeleteAll" Order="Secondary"/>
     </TabbedPage.ToolbarItems>
 
-    <!-- Tabbed Pages -->
     <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="AllTab">
         <StackLayout>
             <StackLayout IsVisible="False" x:Name="SearchSL" Orientation="Horizontal" Padding="10, 20">
-                <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged"
-                           HorizontalOptions="FillAndExpand" x:Name="SearchList"/>
+                <SearchBar x:Name="SearchList"
+                    Placeholder="Search..." 
+                    TextChanged="SearchBar_TextChanged"
+                    HorizontalOptions="FillAndExpand"/>
+
                 <Image Source="cancel.png"
-                       VerticalOptions="Center"
-                       IsVisible="{OnPlatform Android=False, UWP=True}"
-                       HeightRequest="20" WidthRequest="20" 
-                       Margin="10, 0, 0, 0"
-                       BackgroundColor="Red">
+                    VerticalOptions="Center"
+                    IsVisible="{OnPlatform Android=False, UWP=True}"
+                    HeightRequest="20" WidthRequest="20" 
+                    Margin="10, 0, 0, 0"
+                    BackgroundColor="Red">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CloseSearchButton_Clicked"/>
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
-            
-            <ListView ItemTemplate="{StaticResource ListTemplate}" 
-         	    IsPullToRefreshEnabled="True"
+
+            <ListView Style="{StaticResource ListViewStyle}"
                 Refreshing="ListView_Refreshing"
                 x:Name="ListAll" 
-                HasUnevenRows="True" 
                 ItemSelected="ListView_ItemSelected"/>
         </StackLayout>
     </ContentPage>
 
     <ContentPage Title="Today" Appearing="TodayTab_Appearing">
-        <ListView ItemTemplate="{StaticResource ListTemplate}" 
-                  IsPullToRefreshEnabled="True"
-                  Refreshing="ListView_Refreshing"
-                  x:Name="ListToday" 
-                  HasUnevenRows="True" 
-                  ItemSelected="ListView_ItemSelected"/>
+        <ListView Style="{StaticResource ListViewStyle}"
+            Refreshing="ListView_Refreshing"
+            x:Name="ListToday" 
+            ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
     <ContentPage Title="Next 7 Days" Appearing="ThisWeekTab_Appearing">
-        <ListView ItemTemplate="{StaticResource ListTemplate}" 
-                  IsPullToRefreshEnabled="True"
-                  Refreshing="ListView_Refreshing"
-                  x:Name="ListThisWeek" 
-                  HasUnevenRows="True" 
-                  ItemSelected="ListView_ItemSelected"/>
+        <ListView Style="{StaticResource ListViewStyle}"
+            Refreshing="ListView_Refreshing"
+            x:Name="ListThisWeek" 
+            ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
-    <!-- ListView ItemTemplate -->
     <TabbedPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ListTemplate">
@@ -76,11 +71,18 @@
                     </StackLayout>
 
                     <ViewCell.ContextActions>
-                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" IsDestructive="True" 
-                                  CommandParameter="{Binding .}" Icon="{OnPlatform Android=delete.png}"/>
+                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" 
+                                  IsDestructive="True" CommandParameter="{Binding .}" 
+                                  Icon="{OnPlatform Android=delete.png}"/>
                     </ViewCell.ContextActions>
                 </ViewCell>
             </DataTemplate>
+
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="IsPullToRefreshEnabled" Value="True"/>
+                <Setter Property="HasUnevenRows" Value="True"/>
+                <Setter Property="ItemTemplate" Value="{StaticResource ListTemplate}"/>
+            </Style>
         </ResourceDictionary>
     </TabbedPage.Resources>
 </TabbedPage>

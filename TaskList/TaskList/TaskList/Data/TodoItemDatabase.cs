@@ -22,13 +22,12 @@ namespace TaskList
             return database.Table<AddNewItem>().ToListAsync();
         }
 
-        // Search Function
         public Task<List<AddNewItem>> GetItemAsync(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))
                 return GetItemsAsync();
 
-            return database.Table<AddNewItem>().Where(s => s.Title.Contains(searchText)).ToListAsync();
+            return database.Table<AddNewItem>().Where(s => s.Title.ToUpper().Contains(searchText.ToUpper())).ToListAsync();
         }
 
         public Task<List<AddNewItem>> GetItemsTodayAsync()

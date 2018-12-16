@@ -11,12 +11,27 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="20">
-            <Label Text="Title:" FontSize="Medium" TextColor="Accent" TextDecorations="Underline"/>
-            <Label Text="{Binding Title}" FontSize="Small"/>
-            <Label Text="Status:" FontSize="Medium" x:Name="Status" TextColor="Accent" TextDecorations="Underline"/>
-            <Label x:Name="StatusLabel" FontSize="Small"/>
-            <Label Text="Due Date:" FontSize="Medium" IsVisible="False" x:Name="DueDate" TextColor="Accent" TextDecorations="Underline"/>
-            <Label Text="{Binding Reminder}" FontSize="Small"/>
+            <Label Text="Title:" Style="{StaticResource Headings}"/>
+            <Label Text="{Binding Title}" Style="{StaticResource Bodys}"/>
+            
+            <Label Text="Status:" x:Name="Status" Style="{StaticResource Headings}"/>
+            <Label x:Name="StatusLabel" Style="{StaticResource Bodys}"/>
+            
+            <Label Text="Due Date:" IsVisible="False" x:Name="DueDate" Style="{StaticResource Headings}"/>
+            <Label Text="{Binding Reminder}" Style="{StaticResource Bodys}"/>
         </StackLayout>
     </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Headings" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Accent"/>
+                <Setter Property="TextDecorations" Value="Underline"/>
+            </Style>
+            <Style x:Key="Bodys" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>
