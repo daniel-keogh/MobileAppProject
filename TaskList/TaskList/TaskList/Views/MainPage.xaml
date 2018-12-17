@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TaskList"
              x:Class="TaskList.MainPage"
-             Title="Simple TaskList">
+             Title="TaskList">
 
     <TabbedPage.ToolbarItems>
         <ToolbarItem Icon="search.png" Text="Search" Clicked="SearchIcon_Clicked" Order="Primary"/>
         <ToolbarItem Icon="add.png" Text="Add" Clicked="CreateNewTask_Clicked" Order="Primary"/>
-        <ToolbarItem Text="Refresh" Clicked="ListView_Refreshing" Order="Secondary"/>
-        <ToolbarItem Text="Delete Completed" Clicked="ListView_DeleteDone" Order="Secondary"/>
-        <ToolbarItem Text="Delete All" Clicked="ListView_DeleteAll" Order="Secondary"/>
+        <ToolbarItem Icon="{OnPlatform UWP=refresh.png}" Text="Refresh" Clicked="ListView_Refreshing" Order="Secondary"/>
+        <ToolbarItem Icon="{OnPlatform UWP=delete-done.png}" Text="Delete Completed" Clicked="ListView_DeleteDone" Order="Secondary"/>
+        <ToolbarItem Icon="{OnPlatform UWP=delete-all.png}" Text="Delete All" Clicked="ListView_DeleteAll" Order="Secondary"/>
     </TabbedPage.ToolbarItems>
 
     <ContentPage Title="All" Appearing="AllTab_Appearing" x:Name="AllTab">
@@ -33,24 +33,21 @@
                 </Image>
             </StackLayout>
 
-            <ListView Style="{StaticResource ListViewStyle}"
-                Refreshing="ListView_Refreshing"
-                x:Name="ListAll" 
+            <ListView x:Name="ListAll" 
+                Refreshing="ListView_Refreshing" 
                 ItemSelected="ListView_ItemSelected"/>
         </StackLayout>
     </ContentPage>
 
     <ContentPage Title="Today" Appearing="TodayTab_Appearing">
-        <ListView Style="{StaticResource ListViewStyle}"
+        <ListView x:Name="ListToday" 
             Refreshing="ListView_Refreshing"
-            x:Name="ListToday" 
             ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
     <ContentPage Title="Next 7 Days" Appearing="ThisWeekTab_Appearing">
-        <ListView Style="{StaticResource ListViewStyle}"
-            Refreshing="ListView_Refreshing"
-            x:Name="ListThisWeek" 
+        <ListView x:Name="ListThisWeek"
+            Refreshing="ListView_Refreshing" 
             ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
@@ -78,7 +75,7 @@
                 </ViewCell>
             </DataTemplate>
 
-            <Style x:Key="ListViewStyle" TargetType="ListView">
+            <Style TargetType="ListView">
                 <Setter Property="IsPullToRefreshEnabled" Value="True"/>
                 <Setter Property="HasUnevenRows" Value="True"/>
                 <Setter Property="ItemTemplate" Value="{StaticResource ListTemplate}"/>

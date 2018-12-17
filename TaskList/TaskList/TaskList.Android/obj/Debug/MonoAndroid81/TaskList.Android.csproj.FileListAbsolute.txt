@@ -129,7 +129,5 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\linksrc\TaskList.Android.pdb
-C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\bin\Debug\TaskList.dll.mdb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\MonoAndroid81\linksrc\TaskList.dll.mdb

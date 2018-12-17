@@ -33,6 +33,8 @@ TaskList.UWP.xr.xml
 cancel.png
 checked.png
 delete.png
+delete-all.png
+delete-done.png
 done.png
 Properties\Default.rd.xml
 refresh.png
