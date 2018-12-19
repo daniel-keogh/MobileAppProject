@@ -5,21 +5,24 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="done.png" Text="Done" Clicked="ItemComplete_Clicked" CommandParameter="{Binding .}"/>
-        <ToolbarItem Icon="delete.png" Text="Delete" Clicked="ItemDelete_Clicked" CommandParameter="{Binding .}"/>
+        <ToolbarItem Icon="done.png" Text="Done" Clicked="ItemComplete_Clicked" CommandParameter="{Binding .}" Order="Primary"/>
+        <ToolbarItem Icon="delete.png" Text="Delete" Clicked="ItemDelete_Clicked" CommandParameter="{Binding .}" Order="Primary"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="20">
-            <Label Text="Title:" Style="{StaticResource Headings}"/>
-            <Label Text="{Binding Title}" Style="{StaticResource Bodys}"/>
-            
-            <Label Text="Status:" x:Name="Status" Style="{StaticResource Headings}"/>
-            <Label x:Name="StatusLabel" Style="{StaticResource Bodys}"/>
-            
-            <Label Text="Due Date:" IsVisible="False" x:Name="DueDate" Style="{StaticResource Headings}"/>
-            <Label Text="{Binding Reminder}" Style="{StaticResource Bodys}"/>
-        </StackLayout>
+        <!-- use a ScrollView in case the Title is really long -->
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="20">
+                <Label Text="Title:" Style="{StaticResource Headings}"/>
+                <Label Text="{Binding Title}" Style="{StaticResource Bodys}"/>
+
+                <Label Text="Status:" x:Name="Status" Style="{StaticResource Headings}"/>
+                <Label x:Name="StatusLabel" Style="{StaticResource Bodys}"/>
+
+                <Label Text="Due Date:" IsVisible="False" x:Name="DueDate" Style="{StaticResource Headings}"/>
+                <Label Text="{Binding Reminder}" Style="{StaticResource Bodys}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 
     <ContentPage.Resources>

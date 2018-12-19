@@ -15,8 +15,8 @@ namespace TaskList
         {
             InitializeComponent();
             BindingContext = item;
-            ShowDateYesOrNo(item);
             ShowStatus(item);
+            ShowDate(item);
         }
 
         private void ShowStatus(AddNewItem item)
@@ -27,13 +27,14 @@ namespace TaskList
                 StatusLabel.Text = "Uncomplete";
         }
 
-        private void ShowDateYesOrNo(AddNewItem item)
+        private void ShowDate(AddNewItem item)
         {
+            // only show the DueDate if a Reminder was set
             if (item.Reminder != null)
                 DueDate.IsVisible = true;
         }
 
-        async private void ItemDelete_Clicked(object sender, EventArgs e)
+        private async void ItemDelete_Clicked(object sender, EventArgs e)
         {
             var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
 
@@ -41,7 +42,7 @@ namespace TaskList
             await Navigation.PopAsync();
         }
 
-        async private void ItemComplete_Clicked(object sender, EventArgs e)
+        private async void ItemComplete_Clicked(object sender, EventArgs e)
         {
             var todoItem = (sender as MenuItem).CommandParameter as AddNewItem;
 

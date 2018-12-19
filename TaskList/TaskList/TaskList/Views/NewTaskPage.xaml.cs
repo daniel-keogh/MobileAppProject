@@ -13,7 +13,6 @@ namespace TaskList
     public partial class NewTaskPage : ContentPage
     {
         private string date, time;
-        private string tName, tReminder;
 
         public NewTaskPage()
         {
@@ -28,19 +27,14 @@ namespace TaskList
             TaskName.Focus();
         }
 
-        // override the back navigation button to display an alert
+        // Override the back navigation button to display an alert
         protected override bool OnBackButtonPressed()
         {
             DisplayConfirmationPrompt();
             return true;
         }
 
-        private void RemindYesOrNo_Toggled(object sender, ToggledEventArgs e)
-        {
-            // do stuff pertaining to notifications
-        }
-
-        // Because the alert will only display by using android's hardware button
+        // Remove the back button on Android since the alert will only display by using the device's hardware button
         private void RemoveAndroidBackBtn()
         {
             if (Device.RuntimePlatform == Device.Android)
@@ -49,7 +43,7 @@ namespace TaskList
 
         private async void DisplayConfirmationPrompt()
         {
-            // the alert only shows if any of the fields have been modified
+            // The alert only shows if any of the fields have been modified
             if (!string.IsNullOrWhiteSpace(TaskName.Text) || SetReminder.IsVisible)
             {
                 bool choice = await DisplayAlert("Warning", "Your changes will be discarded.", "OK", "Cancel");
@@ -65,14 +59,14 @@ namespace TaskList
 
         private async void SaveTask_Clicked(object sender, EventArgs e)
         {
-            tName = TaskName.Text;
-            tReminder = date + " at " + time;
+            string tName = TaskName.Text;
+            string tReminder = date + " at " + time;
 
             if (!string.IsNullOrWhiteSpace(tName))
             {
                 if (SetReminder.IsVisible)
                 {
-                    var todoItem = new AddNewItem(tName, tReminder, GetFullDate());
+                    var todoItem = new AddNewItem(tName, tReminder, GetFormattedDate());
                     await App.Database.SaveItemAsync(todoItem);
                 }
                 else if (!SetReminder.IsVisible)
@@ -101,10 +95,10 @@ namespace TaskList
             ChosenDateTime.Text = "Reminder set for " + date + " at " + time;
         }
 
-        private string GetFullDate()
+        private string GetFormattedDate()
         {
-            string fullDate;
-            return fullDate = ReminderDate.Date.ToString("yyyy-MM-dd");
+            // Formatted date will be used to determine in which tab(s) the item ought to be displayed
+            return ReminderDate.Date.ToString("yyyy-MM-dd");
         }
     }
 }

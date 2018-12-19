@@ -17,16 +17,17 @@
         <StackLayout>
             <StackLayout IsVisible="False" x:Name="SearchSL" Orientation="Horizontal" Padding="10, 20">
                 <SearchBar x:Name="SearchList"
-                    Placeholder="Search..." 
-                    TextChanged="SearchBar_TextChanged"
-                    HorizontalOptions="FillAndExpand"/>
+                           Placeholder="Search..." 
+                           TextChanged="SearchBar_TextChanged"
+                           HorizontalOptions="FillAndExpand"/>
 
                 <Image Source="cancel.png"
-                    VerticalOptions="Center"
-                    IsVisible="{OnPlatform Android=False, UWP=True}"
-                    HeightRequest="20" WidthRequest="20" 
-                    Margin="10, 0, 0, 0"
-                    BackgroundColor="Red">
+                       VerticalOptions="Center"
+                       IsVisible="{OnPlatform Android=False, UWP=True}" 
+                       HeightRequest="20" WidthRequest="20" 
+                       Margin="10, 0, 0, 0"
+                       BackgroundColor="Red">
+                    <!-- The back button can be used on Android instead of an image -->
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CloseSearchButton_Clicked"/>
                     </Image.GestureRecognizers>
@@ -34,42 +35,47 @@
             </StackLayout>
 
             <ListView x:Name="ListAll" 
-                Refreshing="ListView_Refreshing" 
-                ItemSelected="ListView_ItemSelected"/>
+                      Refreshing="ListView_Refreshing" 
+                      ItemSelected="ListView_ItemSelected"/>
         </StackLayout>
     </ContentPage>
 
     <ContentPage Title="Today" Appearing="TodayTab_Appearing">
         <ListView x:Name="ListToday" 
-            Refreshing="ListView_Refreshing"
-            ItemSelected="ListView_ItemSelected"/>
+                  Refreshing="ListView_Refreshing"
+                  ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
     <ContentPage Title="Next 7 Days" Appearing="ThisWeekTab_Appearing">
         <ListView x:Name="ListThisWeek"
-            Refreshing="ListView_Refreshing" 
-            ItemSelected="ListView_ItemSelected"/>
+                  Refreshing="ListView_Refreshing" 
+                  ItemSelected="ListView_ItemSelected"/>
     </ContentPage>
 
     <TabbedPage.Resources>
         <ResourceDictionary>
+            <!-- data template for displaying items in a list -->
             <DataTemplate x:Key="ListTemplate">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal">
-                        <ImageButton Source="{Binding CheckboxSource}" Clicked="Checkbox_Tapped"
+                        <ImageButton Source="{Binding CheckboxSource}" 
+                                     Clicked="Checkbox_Tapped"
                                      HorizontalOptions="Center" VerticalOptions="Center"
-                                     WidthRequest="28" HeightRequest="28" Margin="10, 0, 0, 0"
+                                     WidthRequest="28" HeightRequest="28" 
+                                     Margin="10, 0, 0, 0"
                                      CommandParameter="{Binding .}"/>
 
                         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                            <Label Text="{Binding Title}" FontSize="Medium" MaxLines="5"/>
                             <Label Text="{Binding Reminder}" TextColor="Accent"/>
                         </StackLayout>
                     </StackLayout>
 
                     <ViewCell.ContextActions>
-                        <MenuItem Text="Delete" Clicked="ContextDelete_Clicked" 
-                                  IsDestructive="True" CommandParameter="{Binding .}" 
+                        <MenuItem Text="Delete" 
+                                  Clicked="ContextDelete_Clicked" 
+                                  IsDestructive="True" 
+                                  CommandParameter="{Binding .}" 
                                   Icon="{OnPlatform Android=delete.png}"/>
                     </ViewCell.ContextActions>
                 </ViewCell>

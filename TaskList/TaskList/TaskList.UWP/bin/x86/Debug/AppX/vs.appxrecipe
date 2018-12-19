@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-17T11:28:46.296</Modified>
+      <Modified>2018-12-19T16:52:06.901</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\TaskList.UWP.exe">
       <PackagePath>entrypoint\TaskList.UWP.exe</PackagePath>
-      <Modified>2018-12-17T11:28:43.665</Modified>
+      <Modified>2018-12-19T16:52:05.276</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.9\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -737,7 +737,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll">
       <PackagePath>TaskList.dll</PackagePath>
-      <Modified>2018-12-17T11:28:32.066</Modified>
+      <Modified>2018-12-19T16:51:55.386</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\add.png">
       <PackagePath>add.png</PackagePath>
@@ -928,11 +928,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-12-17T11:28:43.144</Modified>
+      <Modified>2018-12-19T16:52:04.830</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-12-17T11:28:43.146</Modified>
+      <Modified>2018-12-19T16:52:04.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -949,7 +949,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList.UWP\bin\x86\Debug\Core\TaskList.UWP.exe">
       <PackagePath>TaskList.UWP.exe</PackagePath>
-      <Modified>2018-12-17T11:28:46.281</Modified>
+      <Modified>2018-12-19T16:52:06.886</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

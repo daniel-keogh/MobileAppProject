@@ -45,8 +45,10 @@ namespace TaskList
 
         private async Task LoadAllTab()
         {
-            HideSearchBar();
+            if (SearchSL.IsVisible)
+                HideSearchBar();
 
+            // Populates ListAll with all the items in the database
             var allItems = await App.Database.GetItemsAsync();
             _allItems = new ObservableCollection<AddNewItem>(allItems);
             ListAll.ItemsSource = _allItems;
@@ -54,6 +56,7 @@ namespace TaskList
 
         private async Task LoadTodayTab()
         {
+            // Populates ListToday with items from the database whose reminder was set to today's date
             var todayItems = await App.Database.GetItemsTodayAsync();
             _todayItems = new ObservableCollection<AddNewItem>(todayItems);
             ListToday.ItemsSource = _todayItems;
@@ -61,6 +64,7 @@ namespace TaskList
 
         private async Task LoadThisWeekTab()
         {
+            // Populates ListThisWeek with items whose reminder was set to a date within the next 7 days
             var thisWeekItems = await App.Database.GetItemsThisWeekAsync();
             _thisWeekItems = new ObservableCollection<AddNewItem>(thisWeekItems);
             ListThisWeek.ItemsSource = _thisWeekItems;
@@ -68,6 +72,7 @@ namespace TaskList
 
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            // Filter the contents of the list to display only those whose title's match the search text
             var searchItems = await App.Database.GetItemAsync(e.NewTextValue);
             ObservableCollection<AddNewItem> _searchItems = new ObservableCollection<AddNewItem>(searchItems);
             ListAll.ItemsSource = _searchItems;
@@ -75,6 +80,7 @@ namespace TaskList
 
         private void SearchIcon_Clicked(object sender, EventArgs e)
         {
+            // Switch to AllTab and display the searchbox
             CurrentPage = AllTab;
             SearchSL.IsVisible = true;
             SearchList.Text = null;
@@ -88,22 +94,20 @@ namespace TaskList
 
         private void HideSearchBar()
         {
-            if (SearchSL.IsVisible)
-            {
-                SearchList.Text = null;
-                SearchSL.IsVisible = false;
-            }
+            // Set search text to null so the list will display all items
+            SearchList.Text = null;
+            SearchSL.IsVisible = false;
         }
 
-        // Hide the searchbar if it is visible, if not then close the app
         protected override bool OnBackButtonPressed()
         {
-            if (SearchSL.IsVisible)
+            // Hide the searchbar if it is visible
+            if (SearchSL.IsVisible) 
             {
                 HideSearchBar();
                 return true;
             }
-            else
+            else // If it's not visible then close the app
             {
                 return false;
             }        
@@ -144,7 +148,7 @@ namespace TaskList
 
         private async void ListView_DeleteAll(object sender, EventArgs e)
         {
-            bool choice = await DisplayAlert("Warning", "Are you sure you want to delete everything?\n\nThis action is irreversible.\n", "Yes", "No");
+            bool choice = await DisplayAlert("Confirm", "Are you sure you want to delete everything?\n\nThis action is irreversible.\n", "Yes", "No");
 
             if (choice)
             {
@@ -155,7 +159,7 @@ namespace TaskList
 
         private async void ListView_DeleteDone(object sender, EventArgs e)
         {
-            bool choice = await DisplayAlert("Are you sure?", "Delete all completed items?", "Yes", "No");
+            bool choice = await DisplayAlert("Confirm", "Delete all completed items?", "Yes", "No");
 
             if (choice)
             {
@@ -167,12 +171,13 @@ namespace TaskList
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as AddNewItem;
+
             if (item == null)
                 return;
 
             await Navigation.PushAsync(new ItemDetailPage(item));
 
-            // Manually deselect item.
+            // Manually deselect item
             if (sender.Equals(ListToday))
             {
                 ListToday.SelectedItem = null;
@@ -189,31 +194,13 @@ namespace TaskList
 
         private async void ListView_Refreshing(object sender, EventArgs e)
         {
-            if (sender.Equals(_todayItems))
-            {
-                await LoadTodayTab();
-                ListToday.EndRefresh();
-            }
-            else if (sender.Equals(_thisWeekItems))
-            {
-                await LoadThisWeekTab();
-                ListThisWeek.EndRefresh();
-            }
-            else if (sender.Equals(_allItems))
-            {
-                await LoadAllTab();
-                ListAll.EndRefresh();
-            }
-            else // if the toolbar button is clicked
-            {
-                await LoadAllTab();
-                await LoadTodayTab();
-                await LoadThisWeekTab();
+            await LoadAllTab();
+            await LoadTodayTab();
+            await LoadThisWeekTab();
 
-                ListAll.EndRefresh();
-                ListToday.EndRefresh();
-                ListThisWeek.EndRefresh();
-            }
+            ListAll.EndRefresh();
+            ListToday.EndRefresh();
+            ListThisWeek.EndRefresh();
         }
     }
 }

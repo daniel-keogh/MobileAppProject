@@ -17,6 +17,7 @@ namespace TaskList
             MainPage = new NavigationPage(new MainPage());
         }
 
+        // returns a local file path for storing the database
         public static TodoItemDatabase Database
         {
             get
@@ -32,17 +33,17 @@ namespace TaskList
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            
         }
     }
 }

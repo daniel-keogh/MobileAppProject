@@ -11,21 +11,21 @@ namespace TaskList
         public int ID { get; set; }
         public string Title { get; set; }
         public string Reminder { get; set; }
+        public string ReminderDate { get; set; }
         public bool IsComplete { get; set; }
         public string CheckboxSource { get; set; }
-        public string ReminderDate { get; set; }
 
-        // constructors
         public AddNewItem()
         {
-
+            IsComplete = false;
+            CheckboxSource = "unchecked.png";
         }
 
         public AddNewItem(string Title)
         {
             this.Title = Title;
-
             Reminder = null;
+            ReminderDate = null;
             IsComplete = false;
             CheckboxSource = "unchecked.png";
         }
@@ -35,7 +35,6 @@ namespace TaskList
             this.Title = Title;
             this.Reminder = Reminder;
             this.ReminderDate = ReminderDate;
-
             IsComplete = false;
             CheckboxSource = "unchecked.png";
         }
