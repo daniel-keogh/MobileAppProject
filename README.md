@@ -7,7 +7,7 @@ This is a simple, cross-platform to-do list application built with Xamarin.Forms
 Users can: 
 - Create tasks and check tasks off as they're completed.
 - Set due dates.
-- Search for tasks that have been created .
+- Search for tasks that have been created.
 
 ## Screenshots
 
