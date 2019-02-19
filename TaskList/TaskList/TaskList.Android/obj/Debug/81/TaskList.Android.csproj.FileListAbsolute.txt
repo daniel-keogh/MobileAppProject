@@ -1,4 +1,0 @@
-C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\81\MonoAndroid,Version=v8.1.AssemblyAttributes.cs
-C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\81\TaskList.Android.csprojAssemblyReference.cache
-C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\81\libraryimports.cache.stamp
-C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList.Android\obj\Debug\81\res.flag
