@@ -12,3 +12,16 @@ C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Deb
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.dll
 C:\Users\Daniel\source\repos\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.pdb
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.deps.json
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.dll
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\bin\Debug\netstandard2.0\TaskList.pdb
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\Views\NewTaskPage.xaml.g.cs
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.AssemblyInfoInputs.cache
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.AssemblyInfo.cs
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.dll
+C:\Users\Daniel\Documents\GitHub\MobileAppProject\TaskList\TaskList\TaskList\obj\Debug\netstandard2.0\TaskList.pdb
